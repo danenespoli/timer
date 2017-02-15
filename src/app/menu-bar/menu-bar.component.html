@@ -1,0 +1,33 @@
+<md-toolbar>
+    <div class="title">
+      <!--<button md-button>-->
+        <md-icon>watch</md-icon>
+        <span>Watch</span>
+      <!--</button>-->
+    </div>
+    
+  <div class="navigate">
+    <!--<button md-icon-button>
+      <md-icon>watch</md-icon>
+    </button>-->
+
+    <button md-icon-button>
+      <md-icon>invert_colors</md-icon>
+    </button>
+
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>account_circle</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>
+        <md-icon>person_pin</md-icon>
+        <span>Account</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>settings</md-icon>
+        <span>Configure watch</span>
+      </button>
+    </md-menu>
+
+  </div>
+</md-toolbar>

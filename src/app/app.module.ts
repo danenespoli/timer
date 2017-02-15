@@ -8,12 +8,14 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimerViewerComponent } from './timer-viewer/timer-viewer.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimerComponent,
-    TimerViewerComponent
+    TimerViewerComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,

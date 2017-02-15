@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Time } from '../time';
 import { formatted } from 'scramble-generator';
 
 @Component({
@@ -8,7 +9,7 @@ import { formatted } from 'scramble-generator';
 })
 export class TimerViewerComponent implements OnInit {
 
-  times: string[] = [];
+  times: Time[] = [];
   scramble: string;
 
   constructor() { }
@@ -18,7 +19,7 @@ export class TimerViewerComponent implements OnInit {
   }
 
   onTime(time) {
-    this.times.push(time);
+    this.times.push(new Time(time, this.scramble));
     this.scramble = formatted({ cubeSize: 3 });
   }
 

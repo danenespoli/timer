@@ -1,14 +1,20 @@
 <div id="background">
-  <!--<div id="scramble">
+  <app-menu-bar></app-menu-bar>
+
+  <div id="scramble">
     {{scramble}}
-  </div>-->
+  </div>
   <div id="wrapper">
-    <app-timer (time)="onTime($event)"></app-timer>
+    <div id="timer">
+      <app-timer (time)="onTime($event)"></app-timer>
+    </div>
   </div>
-  <div id="times">
-    <li *ngFor="let time of times">
-      {{time}}
-    </li>
-  </div>
+  <!--<div id="times">
+    <md-list dense>
+      <md-list-item *ngFor="let time of times">
+        <span>{{time.time}}</span>
+      </md-list-item>
+    </md-list>
+  </div>-->
   
 </div>

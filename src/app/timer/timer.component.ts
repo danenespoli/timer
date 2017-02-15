@@ -12,10 +12,9 @@ import { Observable, Subscription } from 'rxjs/Rx';
         color: '#2fbc3f'
       })),
       state('idle', style({
-        fontSize: '100px',
-        color: '#2a2a2a'
+        fontSize: '100px'
       })),
-      transition('idle => ready', animate('500ms ease')),
+      transition('idle => ready', animate('350ms ease')),
       transition('ready => idle', animate('50ms ease-out'))
     ])
   ]
