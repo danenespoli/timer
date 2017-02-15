@@ -1,0 +1,14 @@
+<div id="background">
+  <!--<div id="scramble">
+    {{scramble}}
+  </div>-->
+  <div id="wrapper">
+    <app-timer (time)="onTime($event)"></app-timer>
+  </div>
+  <div id="times">
+    <li *ngFor="let time of times">
+      {{time}}
+    </li>
+  </div>
+  
+</div>

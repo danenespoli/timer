@@ -7,11 +7,13 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
+import { TimerViewerComponent } from './timer-viewer/timer-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimerComponent
+    TimerComponent,
+    TimerViewerComponent
   ],
   imports: [
     BrowserModule,

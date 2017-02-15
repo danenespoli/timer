@@ -8,14 +8,14 @@ import { Observable, Subscription } from 'rxjs/Rx';
   animations: [
     trigger('timerState', [
       state('ready', style({
-        fontSize: '125px',
+        fontSize: '115px',
         color: '#2fbc3f'
       })),
       state('idle', style({
         fontSize: '100px',
-        color: '#efefef'
+        color: '#2a2a2a'
       })),
-      transition('idle => ready', animate('350ms ease')),
+      transition('idle => ready', animate('500ms ease')),
       transition('ready => idle', animate('50ms ease-out'))
     ])
   ]

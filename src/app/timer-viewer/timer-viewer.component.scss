@@ -1,0 +1,32 @@
+$light: #2a2a2a;
+$dark: #efefef;
+
+#background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: $dark;
+}
+
+#wrapper {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateY(-20px) translateX(-50%);
+    width: fit-content;
+    height: fit-content;
+}
+
+#times {
+    position: fixed;
+    height: 100%;
+    width: 20%;
+    /*background-color: black;*/
+}
+
+li {
+    color: $light;
+    font-family: 'NTR', sans-serif;
+}
