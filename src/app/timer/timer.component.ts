@@ -1,14 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, trigger, state, style, transition, animate } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss']
+  styleUrls: ['./timer.component.scss'],
+  animations: [
+    trigger('timerState', [
+      state('ready', style({
+        fontSize: '125px',
+        color: '#2fbc3f'
+      })),
+      state('idle', style({
+        fontSize: '100px',
+        color: '#efefef'
+      })),
+      transition('idle => ready', animate('350ms ease')),
+      transition('ready => idle', animate('50ms ease-out'))
+    ])
+  ]
 })
 export class TimerComponent implements OnInit {
 
-  private _ticks: number = 0;
+  private readonly KEYS = {
+    SPACE: ' '
+  };
+
+  @Output() time = new EventEmitter<string>();
+
+  private _ticks: string = '0.00';
   private _timer: Subscription;
   private _timing: Boolean = false;
   private _ready: Boolean = false;
@@ -21,24 +41,23 @@ export class TimerComponent implements OnInit {
   onKeyDown(event) {
     if (this._timing) {
       this._timing = false;
-      this._ready = false;
       this._timer.unsubscribe();
+      this.time.emit(this._ticks);
     } else {
-      if (event.key === ' ') {
-        console.log('keyCode');
+      if (event.key === this.KEYS.SPACE) {
         this._ready = true;
+        this._ticks = '0.00';
       }
     }
   }
 
   onKeyUp(event) {
-    if (event.key === ' ' && this._ready) {
+    if (event.key === this.KEYS.SPACE && this._ready) {
       this._timing = true;
+      this._ready = false;
       this._timer = Observable.timer(0, 10).subscribe(time => {
         if (this._timing) {
-          console.log(time);
-          this._ticks = time / 100;
-          console.log(this._ticks);
+          this._ticks = (time / 100).toFixed(2);
         }
       });
     }
