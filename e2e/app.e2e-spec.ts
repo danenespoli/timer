@@ -1,6 +1,6 @@
 import { TimerPage } from './app.po';
 
-describe('timer App', function() {
+describe('watch App', function() {
   let page: TimerPage;
 
   beforeEach(() => {
