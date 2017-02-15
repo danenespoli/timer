@@ -1,10 +1,10 @@
-import { TimerPage } from './app.po';
+import { WatchPage } from './app.po';
 
 describe('watch App', function() {
-  let page: TimerPage;
+  let page: WatchPage;
 
   beforeEach(() => {
-    page = new TimerPage();
+    page = new WatchPage();
   });
 
   it('should display message saying app works', () => {

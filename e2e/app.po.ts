@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TimerPage {
+export class WatchPage {
   navigateTo() {
     return browser.get('/');
   }
