@@ -1,7 +1,7 @@
 <div id="background"></div>
 <div id="scramble">
   {{scramble}}
-  <button md-icon-button (click)="scramble = getScramble()">
+  <button md-icon-button (click)="scramble = getScramble()" [style.opacity]="0.7">
     <md-icon>refresh</md-icon>
   </button>
 </div>
