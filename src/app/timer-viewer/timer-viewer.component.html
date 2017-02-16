@@ -1,18 +1,38 @@
 <div id="background"></div>
 <div id="scramble">
   {{scramble}}
-  <md-icon>refresh</md-icon>
+  <button md-icon-button (click)="scramble = getScramble()">
+    <md-icon>refresh</md-icon>
+  </button>
 </div>
 <div id="wrapper">
   <div id="timer">
     <app-timer (time)="onTime($event)"></app-timer>
   </div>
 </div>
-<!--<div id="timesList">
-  <md-list dense>
-    <md-list-item *ngFor="let time of times">
-      <span>{{time.time}}</span>
-    </md-list-item>
-  </md-list>
-</div>-->
+<div #timesList id="timesList">
+
+  <div id="masterControls">
+    <button md-icon-button *ngIf="times.length" (click)="deleteAll()" mdTooltip="Delete all times" [mdTooltipPosition]="'after'">
+      <md-icon>delete_forever</md-icon>
+    </button>
+  </div>
+
+  <div *ngFor="let time of times">
+    <button md-raised-button [mdMenuTriggerFor]="menu" class="timeListing">
+      <label>{{time.time}}</label>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="deleteTime(time)">
+        <md-icon>delete</md-icon>
+        <span>Delete</span>
+      </button>
+      <button md-menu-item (click)="openInfoDialog(time)">
+        <md-icon>info</md-icon>
+        <span>View scramble</span>
+      </button>
+    </md-menu>
+  </div>
+
+</div>
 <app-menu-bar></app-menu-bar>
