@@ -1,0 +1,16 @@
+@import '../constants.scss';
+
+* {
+    font-family: 'Raleway', sans-serif;
+    color: $light;
+    font-weight: 700;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+}

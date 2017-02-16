@@ -5,17 +5,24 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { DialogsService } from './services/dialog.service';
+
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimerViewerComponent } from './timer-viewer/timer-viewer.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { TimeInfoDialogComponent } from './time-info-dialog/time-info-dialog.component';
 
 @NgModule({
+  entryComponents: [
+    TimeInfoDialogComponent
+  ],
   declarations: [
     AppComponent,
     TimerComponent,
     TimerViewerComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    TimeInfoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,9 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     HttpModule,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    DialogsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

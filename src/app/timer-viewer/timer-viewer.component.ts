@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ViewContainerRef } from '@angular/core';
+import { DialogsService } from '../services/dialog.service';
+import { TimeInfoDialogComponent } from '../time-info-dialog/time-info-dialog.component';
 import { Time } from '../time';
 import { formatted } from 'scramble-generator';
 
@@ -7,20 +9,48 @@ import { formatted } from 'scramble-generator';
   templateUrl: './timer-viewer.component.html',
   styleUrls: ['./timer-viewer.component.scss']
 })
-export class TimerViewerComponent implements OnInit {
+export class TimerViewerComponent implements OnInit, AfterViewChecked {
 
   times: Time[] = [];
   scramble: string;
+  cubeSize: number = 3;
+  @ViewChild('timesList') timesList;
 
-  constructor() { }
+  constructor(
+    private dialogsService: DialogsService,
+    private viewContainerRef: ViewContainerRef
+  ) { }
 
   ngOnInit() {
-    this.scramble = formatted({ cubeSize: 3 });
+    this.scramble = this.getScramble();
+  }
+
+  ngAfterViewChecked() {
+    this.timesList.nativeElement.scrollTop = this.timesList.nativeElement.scrollHeight;
   }
 
   onTime(time) {
     this.times.push(new Time(time, this.scramble));
-    this.scramble = formatted({ cubeSize: 3 });
+    console.log(this.timesList.nativeElement.scrollHeight);
+    console.log(this.timesList.nativeElement.scrollTop + '\n');
+    this.scramble = this.getScramble();
+  }
+
+  getScramble(): string {
+    return formatted({ cubeSize: this.cubeSize });
+  }
+
+  deleteTime(time) {
+    this.times.splice(this.times.indexOf(time), 1);
+  }
+
+  deleteAll() {
+    this.times = [];
+  }
+
+  openInfoDialog(time) {
+    this.dialogsService
+      .timeInfo(time.scramble, this.viewContainerRef);
   }
 
 }
