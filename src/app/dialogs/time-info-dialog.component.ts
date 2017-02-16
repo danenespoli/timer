@@ -6,12 +6,12 @@ import { MdDialogRef } from '@angular/material';
   templateUrl: './time-info-dialog.component.html',
   styleUrls: ['./time-info-dialog.component.scss']
 })
-export class TimeInfoDialogComponent implements OnInit {
+export class TimeInfoDialog implements OnInit {
 
   scramble: string;
 
   constructor(
-    public dialogRef: MdDialogRef<TimeInfoDialogComponent>
+    public dialogRef: MdDialogRef<TimeInfoDialog>
   ) { }
 
   ngOnInit() {

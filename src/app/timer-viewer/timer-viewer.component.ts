@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ViewContainerRef } from '@angular/core';
 import { DialogsService } from '../services/dialog.service';
-import { TimeInfoDialogComponent } from '../time-info-dialog/time-info-dialog.component';
+import { TimeInfoDialog } from '../dialogs/time-info-dialog.component';
 import { Time } from '../time';
 import { formatted } from 'scramble-generator';
 
@@ -21,6 +21,10 @@ export class TimerViewerComponent implements OnInit, AfterViewChecked {
     private viewContainerRef: ViewContainerRef
   ) { }
 
+  getScramble(): string {
+    return formatted({ cubeSize: this.cubeSize });
+  }
+
   ngOnInit() {
     this.scramble = this.getScramble();
   }
@@ -34,10 +38,6 @@ export class TimerViewerComponent implements OnInit, AfterViewChecked {
     console.log(this.timesList.nativeElement.scrollHeight);
     console.log(this.timesList.nativeElement.scrollTop + '\n');
     this.scramble = this.getScramble();
-  }
-
-  getScramble(): string {
-    return formatted({ cubeSize: this.cubeSize });
   }
 
   deleteTime(time) {
