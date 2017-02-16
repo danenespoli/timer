@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { TimeInfoDialogComponent } from '../time-info-dialog/time-info-dialog.component';
+import { TimeInfoDialog } from '../dialogs/time-info-dialog.component';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 import { Injectable, ViewContainerRef } from '@angular/core';
 
@@ -10,11 +10,11 @@ export class DialogsService {
 
     public timeInfo(scramble: string, viewContainerRef: ViewContainerRef): Observable<boolean> {
 
-        let dialogRef: MdDialogRef<TimeInfoDialogComponent>;
+        let dialogRef: MdDialogRef<TimeInfoDialog>;
         const config = new MdDialogConfig();
         config.viewContainerRef = viewContainerRef;
 
-        dialogRef = this.dialog.open(TimeInfoDialogComponent, config);
+        dialogRef = this.dialog.open(TimeInfoDialog, config);
 
         dialogRef.componentInstance.scramble = scramble;
 

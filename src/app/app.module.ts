@@ -11,18 +11,18 @@ import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimerViewerComponent } from './timer-viewer/timer-viewer.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
-import { TimeInfoDialogComponent } from './time-info-dialog/time-info-dialog.component';
+import { TimeInfoDialog } from './dialogs/time-info-dialog.component';
 
 @NgModule({
   entryComponents: [
-    TimeInfoDialogComponent
+    TimeInfoDialog
   ],
   declarations: [
     AppComponent,
     TimerComponent,
     TimerViewerComponent,
     MenuBarComponent,
-    TimeInfoDialogComponent
+    TimeInfoDialog
   ],
   imports: [
     BrowserModule,

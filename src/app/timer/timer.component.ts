@@ -38,6 +38,7 @@ export class TimerComponent implements OnInit {
   }
 
   onKeyDown(event) {
+    event.preventDefault();
     if (this._timing) {
       this._timing = false;
       this._timer.unsubscribe();
