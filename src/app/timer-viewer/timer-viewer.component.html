@@ -1,20 +1,18 @@
-<div id="background">
-  <app-menu-bar></app-menu-bar>
-
-  <div id="scramble">
-    {{scramble}}
-  </div>
-  <div id="wrapper">
-    <div id="timer">
-      <app-timer (time)="onTime($event)"></app-timer>
-    </div>
-  </div>
-  <!--<div id="times">
-    <md-list dense>
-      <md-list-item *ngFor="let time of times">
-        <span>{{time.time}}</span>
-      </md-list-item>
-    </md-list>
-  </div>-->
-  
+<div id="background"></div>
+<div id="scramble">
+  {{scramble}}
+  <md-icon>refresh</md-icon>
 </div>
+<div id="wrapper">
+  <div id="timer">
+    <app-timer (time)="onTime($event)"></app-timer>
+  </div>
+</div>
+<!--<div id="timesList">
+  <md-list dense>
+    <md-list-item *ngFor="let time of times">
+      <span>{{time.time}}</span>
+    </md-list-item>
+  </md-list>
+</div>-->
+<app-menu-bar></app-menu-bar>

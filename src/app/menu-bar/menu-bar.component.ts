@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuBarComponent implements OnInit {
 
+  darkMode: Boolean = false;
+
   constructor() { }
 
   ngOnInit() {

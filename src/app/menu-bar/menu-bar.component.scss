@@ -46,9 +46,11 @@ span {
 
 md-icon {
     font-family: 'Material Icons';
+    position: relative;
+    bottom: 1px;
 }
 
-button {
+button:not(#menu) {
     margin: 0 10px;
 }
 
