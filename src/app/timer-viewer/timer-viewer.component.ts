@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 import { DialogsService } from '../services/dialog.service';
 import { TimeInfoDialog } from '../dialogs/time-info-dialog.component';
 import { Time } from '../time';
@@ -18,7 +18,8 @@ export class TimerViewerComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private dialogsService: DialogsService,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   getScramble(): string {
@@ -27,17 +28,19 @@ export class TimerViewerComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.scramble = this.getScramble();
+    this.changeDetectorRef.detectChanges();
+    this.timesList.nativeElement.scrollTop = this.timesList.nativeElement.scrollHeight;
   }
 
   ngAfterViewChecked() {
-    this.timesList.nativeElement.scrollTop = this.timesList.nativeElement.scrollHeight;
+
   }
 
   onTime(time) {
     this.times.push(new Time(time, this.scramble));
-    console.log(this.timesList.nativeElement.scrollHeight);
-    console.log(this.timesList.nativeElement.scrollTop + '\n');
     this.scramble = this.getScramble();
+    this.changeDetectorRef.detectChanges();
+    this.timesList.nativeElement.scrollTop = this.timesList.nativeElement.scrollHeight;
   }
 
   deleteTime(time) {
