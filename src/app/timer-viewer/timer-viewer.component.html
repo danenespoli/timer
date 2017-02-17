@@ -10,13 +10,14 @@
     <app-timer (time)="onTime($event)"></app-timer>
   </div>
 </div>
-<div #timesList id="timesList">
 
-  <div id="masterControls">
-    <button md-icon-button *ngIf="times.length" (click)="deleteAll()" mdTooltip="Delete all times" [mdTooltipPosition]="'after'">
-      <md-icon>delete_forever</md-icon>
-    </button>
-  </div>
+<div id="masterControls">
+  <button md-icon-button *ngIf="times.length" (click)="deleteAll()" mdTooltip="Delete all times" [mdTooltipPosition]="'after'">
+    <md-icon>delete_forever</md-icon>
+  </button>
+</div>
+
+<div #timesList id="timesList">
 
   <div *ngFor="let time of times">
     <button md-raised-button [mdMenuTriggerFor]="menu" class="timeListing">
