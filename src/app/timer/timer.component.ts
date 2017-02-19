@@ -22,7 +22,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
 export class TimerComponent implements OnInit {
 
   private readonly KEYS = {
-    SPACE: ' '
+    SPACE: ' ',
+    ENTER: 'Enter'
   };
 
   @Output() time = new EventEmitter<string>();
@@ -38,7 +39,10 @@ export class TimerComponent implements OnInit {
   }
 
   onKeyDown(event) {
-    event.preventDefault();
+    if (event.key === this.KEYS.SPACE || event.key === this.KEYS.ENTER) {
+      event.preventDefault();
+    }
+
     if (this._timing) {
       this._timing = false;
       this._timer.unsubscribe();
